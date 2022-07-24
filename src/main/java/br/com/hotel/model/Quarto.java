@@ -13,16 +13,16 @@ public class Quarto {
     private Long id;
 
     @Column(nullable = false)
+    private Boolean disponibilidade;
+    @Column(nullable = false)
     private Integer numeroDoQuarto;
 
-    @Column(nullable = false)
-    private Integer disponibilidade;
 
     @Deprecated
     public Quarto() {
     }
 
-    public Quarto(Long id, Integer numeroDoQuarto, Integer disponibilidade) {
+    public Quarto(Long id, Integer numeroDoQuarto, Boolean disponibilidade) {
         this.id = id;
         this.numeroDoQuarto = numeroDoQuarto;
         this.disponibilidade = disponibilidade;
