@@ -19,11 +19,11 @@ public class Reserva {
     @Column(nullable = false)
     private LocalDateTime dataReserva;
 
-    @Column(nullable = false)
     private LocalDateTime checkin;
 
-    @Column(nullable = false)
     private LocalDateTime checkout;
+
+    private Integer qualidadeDeServico;
 
     @OneToOne
     private Usuario usuario;
@@ -35,13 +35,21 @@ public class Reserva {
     public Reserva() {
     }
 
-    public Reserva(Long id, Integer tempoEstadia, LocalDateTime dataReserva, LocalDateTime checkin, LocalDateTime checkout, Usuario usuario, Quarto quarto) {
+    public Reserva(
+            Long id, Integer tempoEstadia, LocalDateTime dataReserva,
+            LocalDateTime checkin, LocalDateTime checkout, Integer qualidadeDeServico,
+            Usuario usuario, Quarto quarto
+    ) {
         this.id = id;
         this.tempoEstadia = tempoEstadia;
         this.dataReserva = dataReserva;
         this.checkin = checkin;
         this.checkout = checkout;
+        this.qualidadeDeServico = qualidadeDeServico;
         this.usuario = usuario;
         this.quarto = quarto;
+    }
+
+    public Reserva(Integer tempoEstadia, LocalDateTime dataReserva, Usuario usuario) {
     }
 }
