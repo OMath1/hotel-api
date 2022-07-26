@@ -1,6 +1,6 @@
-package br.com.hotel.dto;
+package br.com.hotel.api.dto;
 
-import br.com.hotel.model.Usuario;
+import br.com.hotel.domain.model.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;

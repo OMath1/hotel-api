@@ -1,14 +1,10 @@
-package br.com.hotel.dto;
+package br.com.hotel.api.dto;
 
-import br.com.hotel.model.Quarto;
-import br.com.hotel.model.Reserva;
-import br.com.hotel.model.Usuario;
+import br.com.hotel.domain.model.Reserva;
+import br.com.hotel.domain.model.Usuario;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 
-import javax.persistence.Column;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Getter

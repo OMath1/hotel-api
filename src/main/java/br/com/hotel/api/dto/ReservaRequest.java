@@ -1,11 +1,10 @@
-package br.com.hotel.dto;
+package br.com.hotel.api.dto;
 
-import br.com.hotel.model.Reserva;
-import br.com.hotel.model.Usuario;
+import br.com.hotel.domain.model.Reserva;
+import br.com.hotel.domain.model.Usuario;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;

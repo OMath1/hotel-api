@@ -1,4 +1,4 @@
-package br.com.hotel.model;
+package br.com.hotel.domain.model;
 
 import lombok.Getter;
 import lombok.Setter;

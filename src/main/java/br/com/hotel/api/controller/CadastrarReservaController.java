@@ -1,12 +1,12 @@
-package br.com.hotel.controller.client;
+package br.com.hotel.api.controller;
 
-import br.com.hotel.dto.DetalhesReservaResponse;
-import br.com.hotel.dto.ReservaRequest;
-import br.com.hotel.model.Reserva;
-import br.com.hotel.model.Usuario;
-import br.com.hotel.repository.ReservaRepository;
-import br.com.hotel.repository.UsuarioRepository;
-import br.com.hotel.service.ReservaService;
+import br.com.hotel.api.dto.DetalhesReservaResponse;
+import br.com.hotel.api.dto.ReservaRequest;
+import br.com.hotel.domain.model.Reserva;
+import br.com.hotel.domain.model.Usuario;
+import br.com.hotel.domain.repository.ReservaRepository;
+import br.com.hotel.domain.repository.UsuarioRepository;
+import br.com.hotel.domain.service.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

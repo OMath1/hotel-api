@@ -1,7 +1,7 @@
-package br.com.hotel.controller.client;
+package br.com.hotel.api.controller;
 
-import br.com.hotel.dto.UsuarioRequest;
-import br.com.hotel.repository.UsuarioRepository;
+import br.com.hotel.api.dto.UsuarioRequest;
+import br.com.hotel.domain.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

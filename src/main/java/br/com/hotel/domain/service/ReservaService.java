@@ -1,17 +1,14 @@
-package br.com.hotel.service;
+package br.com.hotel.domain.service;
 
-import br.com.hotel.exception.EstadiaInvalidaException;
-import br.com.hotel.exception.ReservaAntecipadaException;
-import br.com.hotel.exception.ReservaNoPassadoException;
-import br.com.hotel.model.Reserva;
-import br.com.hotel.repository.QuartoRepository;
-import br.com.hotel.repository.ReservaRepository;
-import br.com.hotel.repository.UsuarioRepository;
+import br.com.hotel.api.exception.EstadiaInvalidaException;
+import br.com.hotel.api.exception.ReservaAntecipadaException;
+import br.com.hotel.api.exception.ReservaNoPassadoException;
+import br.com.hotel.domain.model.Reserva;
+import br.com.hotel.domain.repository.ReservaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.Month;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
