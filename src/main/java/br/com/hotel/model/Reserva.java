@@ -1,6 +1,7 @@
 package br.com.hotel.model;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -19,17 +20,20 @@ public class Reserva {
     @Column(nullable = false)
     private LocalDateTime dataReserva;
 
+    @Setter
+    @Column(nullable = false)
     private LocalDateTime checkin;
-
+    @Setter
+    @Column(nullable = false)
     private LocalDateTime checkout;
 
     private Integer qualidadeDeServico;
 
-    @OneToOne
+    @OneToOne(optional = false)
     private Usuario usuario;
 
-    @OneToOne
-    private Quarto quarto;
+//    @OneToOne(optional = false)
+//    private Quarto quarto;
 
     @Deprecated
     public Reserva() {
@@ -47,9 +51,12 @@ public class Reserva {
         this.checkout = checkout;
         this.qualidadeDeServico = qualidadeDeServico;
         this.usuario = usuario;
-        this.quarto = quarto;
+//        this.quarto = quarto;
     }
 
     public Reserva(Integer tempoEstadia, LocalDateTime dataReserva, Usuario usuario) {
+        this.tempoEstadia = tempoEstadia;
+        this.dataReserva = dataReserva;
+        this.usuario = usuario;
     }
 }

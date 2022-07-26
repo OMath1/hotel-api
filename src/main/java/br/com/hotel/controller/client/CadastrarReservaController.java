@@ -7,7 +7,6 @@ import br.com.hotel.model.Usuario;
 import br.com.hotel.repository.ReservaRepository;
 import br.com.hotel.repository.UsuarioRepository;
 import br.com.hotel.service.ReservaService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,33 +18,34 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/usuarios/{idUsuario}/reservas")
-@RequiredArgsConstructor
+@RequestMapping("/usuarios/{id}/reservas")
 public class CadastrarReservaController {
 
-    private final UsuarioRepository usuarioRepository;
-    private final ReservaRepository reservaRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+    @Autowired
+    private ReservaRepository reservaRepository;
 
     @Autowired
     private ReservaService reservaService;
 
     @PostMapping
-    public ResponseEntity<DetalhesReservaResponse> cadastrarReserva(
-            @PathVariable Long idUsuario,
+    public ResponseEntity<DetalhesReservaResponse> cadastrar(
+            @PathVariable Long id,
             @RequestBody @Valid ReservaRequest reservaDto,
             UriComponentsBuilder uriComponentsBuilder
     ) {
 
         Usuario usuario = usuarioRepository
-                .findById(idUsuario)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Nao existe cadastro de usuario para o id informado"));
+                .findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe cadastro de usuário para o id informado"));
 
         Reserva novaReserva = reservaDto.paraReserva(usuario);
 
-        reservaRepository.save(novaReserva);
+        reservaService.fazReserva(novaReserva);
 
         URI location = uriComponentsBuilder
-                .path("/usuarios/{idUsuario}/reservas/{id}")
+                .path("/usuarios/{id}/reservas/{idReserva}")
                 .buildAndExpand(usuario.getId(), novaReserva.getId())
                 .toUri();
 

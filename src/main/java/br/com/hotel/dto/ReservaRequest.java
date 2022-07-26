@@ -3,7 +3,6 @@ package br.com.hotel.dto;
 import br.com.hotel.model.Reserva;
 import br.com.hotel.model.Usuario;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.validation.constraints.FutureOrPresent;
@@ -18,7 +17,7 @@ public class ReservaRequest {
     private Integer tempoEstadia;
 
     @NotNull
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime dataReserva;
 
     public Reserva paraReserva (Usuario usuario) {
