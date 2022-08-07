@@ -17,6 +17,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 
+import static org.springframework.http.HttpStatus.*;
+
 @RestController
 @RequestMapping("/usuarios/{id}/reservas")
 public class CadastrarReservaController {
@@ -35,10 +37,9 @@ public class CadastrarReservaController {
             @RequestBody @Valid ReservaRequest reservaDto,
             UriComponentsBuilder uriComponentsBuilder
     ) {
-
         Usuario usuario = usuarioRepository
                 .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Não existe cadastro de usuário para o id informado"));
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Não existe cadastro de usuário para o id informado"));
 
         Reserva novaReserva = reservaDto.paraReserva(usuario);
 
