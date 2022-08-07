@@ -22,8 +22,7 @@ public class Quarto {
     public Quarto() {
     }
 
-    public Quarto(Long id, Integer numeroDoQuarto, Boolean disponibilidade) {
-        this.id = id;
+    public Quarto(Integer numeroDoQuarto, Boolean disponibilidade) {
         this.numeroDoQuarto = numeroDoQuarto;
         this.disponibilidade = disponibilidade;
     }

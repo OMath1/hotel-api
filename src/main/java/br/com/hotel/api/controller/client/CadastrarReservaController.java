@@ -1,4 +1,4 @@
-package br.com.hotel.api.controller;
+package br.com.hotel.api.controller.client;
 
 import br.com.hotel.api.dto.DetalhesReservaResponse;
 import br.com.hotel.api.dto.ReservaRequest;
