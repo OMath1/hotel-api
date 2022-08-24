@@ -21,6 +21,8 @@ class ReservaServiceTest {
         IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> reservaService.fazReserva(novaReserva));
 
         assertEquals("Não é possível fazer uma reserva com mais de 30 dias de antecipação", illegalArgumentException.getMessage());
+
+//        verify(reservaService, times(1)).fazReserva(eq(novaReserva));
     }
 
     @Test

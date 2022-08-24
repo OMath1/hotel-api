@@ -1,5 +1,6 @@
 package br.com.hotel.api.dto;
 
+import br.com.hotel.domain.model.Quarto;
 import br.com.hotel.domain.model.Reserva;
 import br.com.hotel.domain.model.Usuario;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -21,7 +22,7 @@ public class DetalhesReservaResponse {
 
     private Usuario usuario;
 
-//    private Quarto quarto;
+    private Quarto quarto;
 
     public DetalhesReservaResponse(Reserva reserva) {
         this.tempoEstadia = reserva.getTempoEstadia();
@@ -30,6 +31,6 @@ public class DetalhesReservaResponse {
         this.checkout = reserva.getCheckout();
         this.qualidadeDeServico = reserva.getQualidadeDeServico();
         this.usuario = reserva.getUsuario();
-//        this.quarto = reserva.getQuarto();
+        this.quarto = reserva.getQuarto();
     }
 }

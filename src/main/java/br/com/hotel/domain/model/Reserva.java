@@ -34,8 +34,8 @@ public class Reserva {
     @OneToOne(optional = false)
     private Usuario usuario;
 
-//    @OneToOne(optional = false)
-//    private Quarto quarto;
+    @OneToOne(optional = false)
+    private Quarto quarto;
 
     @Deprecated
     public Reserva() {
@@ -53,12 +53,19 @@ public class Reserva {
         this.checkout = checkout;
         this.qualidadeDeServico = qualidadeDeServico;
         this.usuario = usuario;
-//        this.quarto = quarto;
+        this.quarto = quarto;
     }
 
-    public Reserva(Integer tempoEstadia, LocalDateTime dataReserva, Usuario usuario) {
+    public Reserva(Integer tempoEstadia, LocalDateTime dataReserva, Usuario usuario, Quarto quarto) {
         this.tempoEstadia = tempoEstadia;
         this.dataReserva = dataReserva;
+        this.usuario = usuario;
+        this.quarto = quarto;
+    }
+
+    public Reserva(Integer tempoEstadia, LocalDateTime data, Usuario usuario) {
+        this.tempoEstadia = tempoEstadia;
+        this.dataReserva = data;
         this.usuario = usuario;
     }
 }

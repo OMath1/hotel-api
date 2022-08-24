@@ -1,5 +1,6 @@
 package br.com.hotel.api.dto;
 
+import br.com.hotel.domain.model.Quarto;
 import br.com.hotel.domain.model.Reserva;
 import br.com.hotel.domain.model.Usuario;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -19,7 +20,7 @@ public class ReservaRequest {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime dataReserva;
 
-    public Reserva paraReserva (Usuario usuario) {
-        return new Reserva(this.tempoEstadia, this.dataReserva, usuario);
+    public Reserva paraReserva (Usuario usuario, Quarto quarto) {
+        return new Reserva(this.tempoEstadia, this.dataReserva, usuario, quarto);
     }
 }

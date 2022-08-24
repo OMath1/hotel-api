@@ -2,8 +2,10 @@ package br.com.hotel.api.controller.client;
 
 import br.com.hotel.api.dto.DetalhesReservaResponse;
 import br.com.hotel.api.dto.ReservaRequest;
+import br.com.hotel.domain.model.Quarto;
 import br.com.hotel.domain.model.Reserva;
 import br.com.hotel.domain.model.Usuario;
+import br.com.hotel.domain.repository.QuartoRepository;
 import br.com.hotel.domain.repository.ReservaRepository;
 import br.com.hotel.domain.repository.UsuarioRepository;
 import br.com.hotel.domain.service.ReservaService;
@@ -20,28 +22,35 @@ import java.net.URI;
 import static org.springframework.http.HttpStatus.*;
 
 @RestController
-@RequestMapping("/usuarios/{id}/reservas")
+@RequestMapping("/usuarios/{idUsuario}/quartos/{idQuarto}/reservas")
 public class CadastrarReservaController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
     @Autowired
     private ReservaRepository reservaRepository;
+    @Autowired
+    private QuartoRepository quartoRepository;
 
     @Autowired
     private ReservaService reservaService;
 
     @PostMapping
     public ResponseEntity<DetalhesReservaResponse> cadastrar(
-            @PathVariable Long id,
+            @PathVariable Long idQuarto,
+            @PathVariable Long idUsuario,
             @RequestBody @Valid ReservaRequest reservaDto,
             UriComponentsBuilder uriComponentsBuilder
     ) {
         Usuario usuario = usuarioRepository
-                .findById(id)
+                .findById(idUsuario)
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Não existe cadastro de usuário para o id informado"));
 
-        Reserva novaReserva = reservaDto.paraReserva(usuario);
+        Quarto quarto = quartoRepository
+                .findById(idQuarto)
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Não existe cadastro de quarto para o id informado"));
+
+        Reserva novaReserva = reservaDto.paraReserva(usuario, quarto);
 
         reservaService.fazReserva(novaReserva);
 

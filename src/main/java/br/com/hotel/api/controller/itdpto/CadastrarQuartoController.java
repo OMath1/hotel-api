@@ -17,7 +17,7 @@ import java.net.URI;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/quartos")
+@RequestMapping("itdpto/quartos")
 public class CadastrarQuartoController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class CadastrarQuartoController {
         quartoRepository.save(novoQuarto);
 
         URI location = uri
-                .path("/quartos/{id}")
+                .path("itdpto/quartos/{id}")
                 .buildAndExpand(novoQuarto.getId())
                 .toUri();
 
