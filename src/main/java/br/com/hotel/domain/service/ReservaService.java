@@ -50,7 +50,7 @@ public class ReservaService {
         return reserva.getQuarto().getDisponibilidade();
     }
 
-    public void atualizarPostagem(Long idReserva, Reserva reservaRecebida){
+    public void atualizarPostagem(Long idReserva, Reserva reservaRecebida) {
 
         Reserva reservaAtualizada = verificarReserva(idReserva);
 
@@ -60,7 +60,14 @@ public class ReservaService {
         fazReserva(reservaAtualizada);
     }
 
-    public Reserva verificarReserva(Long idReserva) {
+    public void excluirPostagem(Long idReserva) {
+        Reserva reserva = verificarReserva(idReserva);
+
+        reservaRepository.delete(reserva);
+
+    }
+
+    private Reserva verificarReserva(Long idReserva) {
         Optional<Reserva> reservaCadastrada = reservaRepository.findById(idReserva);
 
         if (reservaCadastrada.isPresent()) {

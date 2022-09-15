@@ -1,8 +1,6 @@
 package br.com.hotel.api.dto;
 
-import br.com.hotel.domain.model.Quarto;
 import br.com.hotel.domain.model.Reserva;
-import br.com.hotel.domain.model.Usuario;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
