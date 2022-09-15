@@ -20,6 +20,6 @@ public class DeletarReservaController {
 
     @DeleteMapping
     private void excluir (@PathVariable Long idReserva) {
-        reservaService.excluirPostagem(idReserva);
+        reservaService.excluirReserva(idReserva);
     }
 }

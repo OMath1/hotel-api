@@ -3,6 +3,7 @@ package br.com.hotel.api.controller.client;
 import br.com.hotel.api.dto.UsuarioRequest;
 import br.com.hotel.domain.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,15 +18,16 @@ import java.net.URI;
 @RestController
 @RequestMapping("/usuarios")
 public class CadastrarUsuarioController {
-    private final UsuarioRepository usuarioRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @PostMapping
-    public ResponseEntity<?> cadastrarUsuario(@RequestBody @Valid UsuarioRequest usuarioRequest, UriComponentsBuilder uri) {
+    public ResponseEntity<?> cadastrarUsuario(@RequestBody @Valid UsuarioRequest usuarioRequest, UriComponentsBuilder uriComponentsBuilder) {
         var novoUsuario = usuarioRequest.paraUsuario();
 
         usuarioRepository.save(novoUsuario);
 
-        URI location = uri
+        URI location = uriComponentsBuilder
                 .path("/usuarios/{id}")
                 .buildAndExpand(novoUsuario.getId())
                 .toUri();

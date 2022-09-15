@@ -4,7 +4,6 @@ import br.com.hotel.api.dto.AtualizarReservaRequest;
 import br.com.hotel.domain.model.Reserva;
 import br.com.hotel.domain.repository.QuartoRepository;
 import br.com.hotel.domain.repository.ReservaRepository;
-import br.com.hotel.domain.repository.UsuarioRepository;
 import br.com.hotel.domain.service.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +39,7 @@ public class AtualizarReservaController {
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND, "Não existe o cadastro dessa reserva informada"));
 
         Reserva reservaModificada = atualizarReservaRequest.paraReserva(reserva);
-        reservaService.atualizarPostagem(idReserva, reservaModificada);
+        reservaService.atualizarReserva(idReserva, reservaModificada);
 
         URI location = uriComponentsBuilder
                 .path("/reservas/{idReserva}")

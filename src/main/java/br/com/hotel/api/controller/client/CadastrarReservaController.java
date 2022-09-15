@@ -36,7 +36,7 @@ public class CadastrarReservaController {
     private ReservaService reservaService;
 
     @PostMapping
-    public ResponseEntity<DetalhesReservaResponse> cadastrar(
+    public ResponseEntity<?> cadastrar(
             @PathVariable Long idQuarto,
             @PathVariable Long idUsuario,
             @RequestBody @Valid ReservaRequest reservaDto,
@@ -59,6 +59,6 @@ public class CadastrarReservaController {
                 .buildAndExpand(usuario.getId(), novaReserva.getId())
                 .toUri();
 
-        return ResponseEntity.created(location).body(new DetalhesReservaResponse(novaReserva));
+        return ResponseEntity.created(location).build();
     }
 }
