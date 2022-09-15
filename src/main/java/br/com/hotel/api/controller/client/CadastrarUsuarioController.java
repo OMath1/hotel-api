@@ -1,4 +1,4 @@
-package br.com.hotel.api.controller;
+package br.com.hotel.api.controller.client;
 
 import br.com.hotel.api.dto.UsuarioRequest;
 import br.com.hotel.domain.repository.UsuarioRepository;

@@ -1,0 +1,1 @@
+INSERT INTO quarto (disponibilidade, numero_do_quarto) VALUES(1, 412);
