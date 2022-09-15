@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -47,6 +48,26 @@ public class ReservaService {
 
     public boolean disponibilidadeQuarto(Reserva reserva) {
         return reserva.getQuarto().getDisponibilidade();
+    }
+
+    public void atualizarPostagem(Long idReserva, Reserva reservaRecebida){
+
+        Reserva reservaAtualizada = verificarReserva(idReserva);
+
+        reservaAtualizada.setDataReserva(reservaRecebida.getDataReserva());
+        reservaAtualizada.setTempoEstadia(reservaRecebida.getTempoEstadia());
+
+        fazReserva(reservaAtualizada);
+    }
+
+    public Reserva verificarReserva(Long idReserva) {
+        Optional<Reserva> reservaCadastrada = reservaRepository.findById(idReserva);
+
+        if (reservaCadastrada.isPresent()) {
+            return reservaCadastrada.get();
+        } else {
+            throw new IllegalArgumentException("Postagem não encontrada");
+        }
     }
 }
 

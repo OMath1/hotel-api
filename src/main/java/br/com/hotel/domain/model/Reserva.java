@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @Entity
 @ToString
 public class Reserva {
@@ -67,5 +68,10 @@ public class Reserva {
         this.tempoEstadia = tempoEstadia;
         this.dataReserva = data;
         this.usuario = usuario;
+    }
+
+    public Reserva(Integer tempoEstadia, LocalDateTime dataReserva, Reserva reserva) {
+        this.tempoEstadia = tempoEstadia;
+        this.dataReserva = dataReserva;
     }
 }
